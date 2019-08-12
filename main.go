@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"github.com/senowijayanto/gorm-mux/app"
+	"github.com/senowijayanto/gorm-mux/app/config"
+)
 
 func main() {
-	fmt.Println("Run!")
+	config := config.GetConfig()
+
+	app := &app.App{}
+	app.Initialize(config)
+	app.Run(":3000")
 }

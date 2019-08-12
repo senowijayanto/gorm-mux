@@ -9,14 +9,14 @@ import (
 	"github.com/senowijayanto/gorm-mux/app/model"
 )
 
-//GetAllEmployees is a method to get all data employees
+// GetAllEmployees method
 func GetAllEmployees(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	employees := []model.Employee{}
 	db.Find(&employees)
 	respondJSON(w, http.StatusOK, employees)
 }
 
-// CreateEmployee is a method to create data employee
+// CreateEmployee method
 func CreateEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	employee := model.Employee{}
 
@@ -34,7 +34,7 @@ func CreateEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusCreated, employee)
 }
 
-// GetEmployee is a method to get employee by name
+// GetEmployee method
 func GetEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
@@ -43,10 +43,10 @@ func GetEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	if employee == nil {
 		return
 	}
-	respondJSON(w, http.StatusCreated, employee)
+	respondJSON(w, http.StatusOK, employee)
 }
 
-// UpdateEmployee is a method to update employee
+// UpdateEmployee method
 func UpdateEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
@@ -70,7 +70,7 @@ func UpdateEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusOK, employee)
 }
 
-// DeleteEmployee is a method to delete user data by name
+// DeleteEmployee method
 func DeleteEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
@@ -86,7 +86,7 @@ func DeleteEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusNoContent, nil)
 }
 
-// DisableEmployee is a method to disabled status employee
+// DisableEmployee method
 func DisableEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
@@ -103,7 +103,7 @@ func DisableEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusOK, employee)
 }
 
-// EnableEmployee is a method to enabled status employee
+// EnableEmployee method
 func EnableEmployee(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
